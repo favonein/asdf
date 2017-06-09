@@ -1,10 +1,12 @@
 package asdf;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class maain {
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException {
 		// doesn't work if there are repeats like ACTGGGTCAGTACTGGACGGCATGA
 		Scanner in = new Scanner(System.in);
 		String product = "";
@@ -13,7 +15,7 @@ public class maain {
 		case 1: {
 			ArrayList<String> seqs = new ArrayList<String>();
 			String next = in.next();
-			int L = next.substring(0, next.length() - 1).length();
+			int L = next.length() - 1;
 			// Put in as many sequence segments as you'd like of length 15, must
 			// edit if you want to do different lengths
 			// type done when finished putting in sequences
@@ -30,12 +32,28 @@ public class maain {
 			next2 = in.next();
 			product = asdfMain.Assembler(SampleRandomizer.randomizer(next2), 15);
 			System.out.println(product);
+			System.out.println("Is Equal");
+			System.out.println(next2.equals(product));
+			System.out.println("Contains");
+			System.out.println(product.contains(next2));
 			break;
 		}
+		case 3: { // incomplete//
+			System.out.println(
+					CRISPRlocate.locator(new File("C:\\Users\\Favian Sun\\workspace\\asdf\\src\\asdf\\ecoli.in"), 29));
+			break;
 		}
-		System.out.println("Is Equal");
-		System.out.println(next2.equals(product));
-		System.out.println("Contains");
-		System.out.println(product.contains(next2));
+		case 4: {
+			String DNA = in.next();
+			System.out.println(DNA);
+			System.out.println(GCcount.count(DNA));
+			break;
+		}
+		case 5: {
+			String RNA = in.next();
+			System.out.println(RNA);
+			System.out.println(Hairpin.hairpin(RNA));
+		}
+		}
 	}
 }
