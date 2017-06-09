@@ -2,11 +2,12 @@ package asdf;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class maain {
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) throws IOException, URISyntaxException {
 		// doesn't work if there are repeats like ACTGGGTCAGTACTGGACGGCATGA
 		Scanner in = new Scanner(System.in);
 		String product = "";
@@ -39,8 +40,7 @@ public class maain {
 			break;
 		}
 		case 3: { // incomplete//
-			System.out.println(
-					CRISPRlocate.locator(new File("C:\\Users\\Favian Sun\\workspace\\asdf\\src\\asdf\\ecoli.in"), 29));
+			System.out.println(CRISPRlocate.locator(new File("ecoli.in"), 29));
 			break;
 		}
 		case 4: {
